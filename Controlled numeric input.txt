@@ -1,0 +1,21 @@
+it is because you are rendering the form in a function inside render().
+
+Every time your state/prop change, the function returns a new form. it caused you to lose focus.
+
+Try putting what's inside the function into your render directly.
+
+<main id="main" role="main">
+    <div className="container-fluid">
+        <FormPostSingle />
+    </div>
+</main>
+===>
+
+<main id="main" role="main">
+    <div className="container-fluid">
+        <form onSubmit={onSubmit}>
+            <InputText name="title" label="Title" placeholder="Enter a title" onChange={onChange} value={valueTitle} />
+            <InputSubmit name="Save" />
+        </form>
+    </div>
+</main>
